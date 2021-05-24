@@ -9,6 +9,7 @@
     "build": "rimraf dist && babel ./src --out-dir dist ",
     "start": "node ./dist/app.js "
   },
+  
   "author": "Goran Jakovljević",
   "license": "MIT",
   "dependencies": {
