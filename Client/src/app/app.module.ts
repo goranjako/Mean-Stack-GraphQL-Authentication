@@ -9,22 +9,34 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NavbarComponent } from './index/navbar/navbar.component';
+import { NotFoundComponent } from './index/not-found/not-found.component';
+import { UserProfileComponent } from './index/user-profile/user-profile.component';
+import { RegisterComponent } from './index/register/register.component';
+import { LoginComponent } from './index/login/login.component';
 
 
-export function tokenGetter() {
+export function tokenGetter()  {
   return localStorage.getItem('token');
 }
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    NotFoundComponent,
+    UserProfileComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
+    NgModule,
     BrowserModule,
     AppRoutingModule,  MDBBootstrapModule.forRoot(), GraphQLModule, HttpClientModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
-    HttpClientModule,
+    HttpClientModule, SweetAlert2Module.forRoot(),
     FormsModule, ReactiveFormsModule,
     JwtModule.forRoot({
       config: {
