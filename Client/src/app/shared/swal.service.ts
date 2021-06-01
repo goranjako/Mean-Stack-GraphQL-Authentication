@@ -1,33 +1,43 @@
 import { Injectable } from '@angular/core';
-import Swal from 'sweetalert2';
+import Swal from  'sweetalert2';
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class Sweetalert2Service {
-  constructor() {}
 
-  alert() {
+
+  constructor( ) { }
+
+  top() {
     Swal.fire({
       position: 'top-end',
       icon: 'success',
       title: 'Your work has been saved',
       showConfirmButton: false,
-      timer: 1500,
-    });
+      timer: 2000,
+
+    })
   }
+    show( text) {
+      Swal.fire({
+       icon: 'warning',
+       position: 'center',
+       title: 'Oops...',
+       text: text,
 
 
-  show(typee, text) {
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'center',
-      showConfirmButton: false,
-      timer: 4000,
-      width: 400,
-    });
-    Toast.fire({
-      icon: typee,
-      title: text,
-    });
-  }
+
+     })
+
+     };
+     logaut() {
+      Swal.fire({
+       position: 'center',
+       icon: 'success',
+      title: 'You have been successfully logged out',
+     })
+
+     };
+
 }
+

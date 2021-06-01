@@ -3,46 +3,43 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GraphQLModule } from './graphql/graphql.module';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { JwtModule } from '@auth0/angular-jwt';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NavbarComponent } from './index/navbar/navbar.component';
 import { NotFoundComponent } from './index/not-found/not-found.component';
-import { UserProfileComponent } from './index/user-profile/user-profile.component';
-import { RegisterComponent } from './index/register/register.component';
-import { LoginComponent } from './index/login/login.component';
-
-
-export function tokenGetter()  {
-  return localStorage.getItem('token');
-}
+import { GraphQLModule } from './graphql/graphql.module';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './auth/login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterComponent } from './auth/register/register.component';
+import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     NotFoundComponent,
-    UserProfileComponent,
+    LoginComponent,
     RegisterComponent,
-    LoginComponent
+    UserProfileComponent
+
   ],
   imports: [
-    NgModule,
     BrowserModule,
-    AppRoutingModule,  MDBBootstrapModule.forRoot(), GraphQLModule, HttpClientModule,
+    AppRoutingModule,
+    GraphQLModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule,
-    HttpClientModule, SweetAlert2Module.forRoot(),
     FormsModule, ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule, MDBBootstrapModule.forRoot(),
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: ['http://localhost:4000/graphql']
-      },
+        tokenGetter: function tokenGetter() {
+          return localStorage.getItem('token');
+        },
+
+      }
     })
   ],
   providers: [],
