@@ -7,6 +7,7 @@ import * as yup from 'yup';
 const fullName = yup
     .string()
     .required('Username is required.')
+    .trim()
     .min(5, 'Username should have atleast 5 characters.')
     .max(20, 'Username should have atmost 10 characters.')
     .matches(/^\w+$/, 'Should be alphanumeric.')
@@ -21,6 +22,7 @@ const fullName = yup
 const email = yup
     .string()
     .required('Email is required.')
+    .trim()
     .email('This is invalid email.')
     
   const userId= yup
